@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Orders.Api", "src\ECommerce.Orders.Api\ECommerce.Orders.Api.csproj", "{8EC363C1-8192-4A3F-B0F2-6B6453BBE124}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EC363C1-8192-4A3F-B0F2-6B6453BBE124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC363C1-8192-4A3F-B0F2-6B6453BBE124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC363C1-8192-4A3F-B0F2-6B6453BBE124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC363C1-8192-4A3F-B0F2-6B6453BBE124}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
