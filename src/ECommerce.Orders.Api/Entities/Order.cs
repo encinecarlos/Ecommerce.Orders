@@ -4,7 +4,14 @@ namespace ECommerce.Orders.Api.Entities;
 
 public class Order
 {
-    public string? OrderId { get; set; }
+    public Order()
+    {
+        OrderId = Guid.NewGuid().GetHashCode();
+        OrderDate = DateTime.UtcNow;
+        OrderStatus = OrderStatus.Pending;
+    }
+    
+    public int OrderId { get; set; }
     public Customer? Customer { get; set; }
     public IList<Product>? Products { get; set; }
     public PaymentType PaymentType { get; set; }

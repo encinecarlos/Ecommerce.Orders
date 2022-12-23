@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using ECommerce.Orders.Api.Mappings;
+using MediatR;
 
 namespace ECommerce.Orders.Api.Application.Command.Orders;
 
 public class OrderRequest : IRequest<OrderResponse>
 {
-    public string? Name { get; set; }
+    public OrderRequestMap? Order { get; set; }
 }

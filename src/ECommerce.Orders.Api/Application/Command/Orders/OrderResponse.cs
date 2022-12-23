@@ -3,4 +3,5 @@
 public class OrderResponse
 {
     public string? ResponseMessage { get; set; }
+    public int orderId { get; set; }
 }
