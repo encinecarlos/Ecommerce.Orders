@@ -10,14 +10,8 @@ public static class RepositoriesServiceCollectionExtension
 {
     public static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
     {
-        // var dbSettings = new MongoDbSettings()
-        // {
-        //     ConnectionString = configuration["Mongodb:ConnectionString"],
-        //     Database = configuration["MongoDb:Database"]
-        // };
-
         services.Configure<MongoDbSettings>(configuration.GetSection("MongoDb"));
-        services.AddScoped<IMongoDbClientService<Order, string>, MongoDbClientService<Order, string>>();
+        services.AddSingleton<IMongoDbClientService<Order, string>, MongoDbClientService<Order, string>>();
         services.AddScoped<IOrdersRepository, OrdersRepository>();
         
         return services;

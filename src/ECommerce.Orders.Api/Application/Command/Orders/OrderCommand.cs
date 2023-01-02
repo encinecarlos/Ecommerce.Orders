@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using ECommerce.Orders.Api.Entities;
-using ECommerce.Orders.Api.Mappings;
 using ECommerce.Orders.Api.Repositories;
 using MediatR;
 

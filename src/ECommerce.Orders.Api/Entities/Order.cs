@@ -7,12 +7,12 @@ public class Order : BaseEntity<string>
     public Order()
     {
         Id = Guid.NewGuid().ToString();
-        OrderId = Guid.NewGuid().GetHashCode();
+        OrderId = DateTime.UtcNow.Ticks.ToString();
         OrderDate = DateTime.UtcNow;
         OrderStatus = OrderStatus.Pending;
     }
     
-    public int OrderId { get; set; }
+    public string? OrderId { get; set; }
     public Customer? Customer { get; set; }
     public IList<Product>? Products { get; set; }
     public PaymentType PaymentType { get; set; }

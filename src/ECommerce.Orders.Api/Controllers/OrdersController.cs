@@ -1,5 +1,6 @@
 ﻿using System.Net.Mime;
 using ECommerce.Orders.Api.Application.Command.Orders;
+using ECommerce.Orders.Api.Application.Query.Orders;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,9 +20,10 @@ public class OrdersController : ControllerBase
 
     [HttpGet]
     
-    public IActionResult GetOrders()
+    public async Task<ActionResult<GetOrdersResponse>> GetOrders()
     {
-        return Ok(Guid.NewGuid().ToString());
+        var result = await Mediator.Send(new GetOrdersRequest(), new CancellationToken());
+        return result;
     }
 
     [HttpPost]
