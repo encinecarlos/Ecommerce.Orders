@@ -2,10 +2,11 @@
 
 namespace ECommerce.Orders.Api.Entities;
 
-public class Order
+public class Order : BaseEntity<string>
 {
     public Order()
     {
+        Id = Guid.NewGuid().ToString();
         OrderId = Guid.NewGuid().GetHashCode();
         OrderDate = DateTime.UtcNow;
         OrderStatus = OrderStatus.Pending;

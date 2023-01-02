@@ -1,6 +1,6 @@
 ﻿namespace ECommerce.Orders.Api.Entities;
 
-public class Customer
+public class Customer : BaseEntity<string>
 {
     public string? Name { get; set; }
     public string? Address { get; set; }

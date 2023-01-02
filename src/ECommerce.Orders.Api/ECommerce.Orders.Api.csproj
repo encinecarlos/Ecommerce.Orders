@@ -16,7 +16,6 @@
 
     <ItemGroup>
       <Folder Include="Application\Query" />
-      <Folder Include="Repositories" />
     </ItemGroup>
 
 </Project>
