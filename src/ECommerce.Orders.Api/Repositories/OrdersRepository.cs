@@ -1,6 +1,5 @@
-﻿using ECommerce.Orders.Api.Entities;
-using ECommerce.Orders.Api.Services;
-using ECommerce.Orders.Api.Services.DataAccess;
+﻿using ECommerce.Orders.Api.Domain.Entities;
+using ECommerce.Orders.Api.Domain.Interfaces;
 
 namespace ECommerce.Orders.Api.Repositories;
 
@@ -12,7 +11,6 @@ public class OrdersRepository : IOrdersRepository
     {
         Client = client;
     }
-
 
     public async Task AddOrderAsync(Order order)
     {

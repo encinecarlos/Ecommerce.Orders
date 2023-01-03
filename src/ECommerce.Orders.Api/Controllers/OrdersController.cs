@@ -11,18 +11,18 @@ namespace ECommerce.Orders.Api.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public class OrdersController : ControllerBase
 {
-    private IMediator Mediator { get; }
+    private IMediator _mediator;
 
     public OrdersController(IMediator mediator)
     {
-        Mediator = mediator;
+        _mediator = mediator;
     }
 
     [HttpGet]
     
-    public async Task<ActionResult<GetOrdersResponse>> GetOrders()
+    public async Task<ActionResult<GetOrdersDto>> GetOrders()
     {
-        var result = await Mediator.Send(new GetOrdersRequest(), new CancellationToken());
+        var result = await _mediator.Send(new GetOrdersQuery(), CancellationToken.None);
         return result;
     }
 
@@ -30,7 +30,7 @@ public class OrdersController : ControllerBase
     [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<OrderResponse>> CreateNewOrder([FromBody] OrderRequest request,
+    public async Task<ActionResult<OrderDto>> CreateNewOrder([FromBody] AddOrderCommand request,
         CancellationToken cancellationToken)
     {
         var result = await Mediator.Send(request, cancellationToken);
