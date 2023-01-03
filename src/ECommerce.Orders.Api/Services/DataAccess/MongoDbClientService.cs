@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
-namespace ECommerce.Orders.Api.Services;
+namespace ECommerce.Orders.Api.Services.DataAccess;
 
 public class MongoDbClientService<T, TId> : IMongoDbClientService<T, TId>
 {

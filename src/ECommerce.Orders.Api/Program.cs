@@ -1,5 +1,6 @@
 using System.Reflection;
 using ECommerce.Orders.Api.Extensions;
+using ECommerce.Orders.Api.Services.EventHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMediator();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddRepositories(builder.Configuration);
+builder.Services.AddScoped<IEventHandlerService, EventHandlerService>();
 
 var app = builder.Build();
 

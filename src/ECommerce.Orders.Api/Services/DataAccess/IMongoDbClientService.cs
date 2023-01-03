@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using MongoDB.Driver;
 
-namespace ECommerce.Orders.Api.Services;
+namespace ECommerce.Orders.Api.Services.DataAccess;
 
 public interface IMongoDbClientService<T, TId>
 {

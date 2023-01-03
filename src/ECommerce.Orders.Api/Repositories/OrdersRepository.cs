@@ -1,5 +1,6 @@
 ﻿using ECommerce.Orders.Api.Entities;
 using ECommerce.Orders.Api.Services;
+using ECommerce.Orders.Api.Services.DataAccess;
 
 namespace ECommerce.Orders.Api.Repositories;
 

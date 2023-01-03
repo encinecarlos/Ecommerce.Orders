@@ -1,6 +1,7 @@
 ﻿using ECommerce.Orders.Api.Entities;
 using ECommerce.Orders.Api.Repositories;
 using ECommerce.Orders.Api.Services;
+using ECommerce.Orders.Api.Services.DataAccess;
 using ECommerce.Orders.Api.Settings;
 using Microsoft.Extensions.Options;
 
