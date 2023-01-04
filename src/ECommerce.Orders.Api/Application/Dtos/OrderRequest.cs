@@ -1,9 +1,9 @@
 ﻿using ECommerce.Orders.Api.Domain.Entities;
 using ECommerce.Orders.Api.Domain.ValueObjects;
 
-namespace ECommerce.Orders.Api.Application.Mappings;
+namespace ECommerce.Orders.Api.Application.Dtos;
 
-public struct OrderRequestMap
+public struct OrderRequest
 {
     public Customer? Customer { get; set; }
     public IList<Product>? Products { get; set; }

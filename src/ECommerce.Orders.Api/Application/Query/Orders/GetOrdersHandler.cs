@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using ECommerce.Orders.Api.Application.Mappings;
+using ECommerce.Orders.Api.Application.Dtos;
 using ECommerce.Orders.Api.Domain.Entities;
 using ECommerce.Orders.Api.Domain.Interfaces;
 using MediatR;
 
 namespace ECommerce.Orders.Api.Application.Query.Orders;
 
-public class GetOrdersHandler : IRequestHandler<GetOrdersQuery, GetOrdersDto>
+public class GetOrdersHandler : IRequestHandler<GetOrdersQuery, IEnumerable<GetOrders>>
 {
     public readonly ILogger<GetOrdersHandler> _logger;
     public readonly IOrdersRepository _ordersRepository;
@@ -23,14 +23,16 @@ public class GetOrdersHandler : IRequestHandler<GetOrdersQuery, GetOrdersDto>
     }
 
 
-    public async Task<GetOrdersDto> Handle(GetOrdersQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<GetOrders>> Handle(GetOrdersQuery request, CancellationToken cancellationToken)
     {
         var orders = await _ordersRepository.GetAllOrdersAsync();
-        var order = _mapper.Map<IEnumerable<Order>, IEnumerable<GetOrdersMap>>(orders);
+        var order = _mapper.Map<IEnumerable<Order>, IEnumerable<GetOrders>>(orders);
 
-        return await Task.FromResult(new GetOrdersDto()
-        {
-            Orders = order
-        });
+        return order;
+
+        //return await Task.FromResult(new GetOrdersDto()
+        //{
+        //    Orders = order
+        //});
     }
 }

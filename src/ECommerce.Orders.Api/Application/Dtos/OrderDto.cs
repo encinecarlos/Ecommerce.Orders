@@ -1,4 +1,4 @@
-﻿namespace ECommerce.Orders.Api.Application.Command.Orders;
+﻿namespace ECommerce.Orders.Api.Application.Dtos;
 
 public class OrderDto
 {

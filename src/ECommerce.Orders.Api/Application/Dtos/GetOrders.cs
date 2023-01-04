@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 
-namespace ECommerce.Orders.Api.Application.Mappings;
+namespace ECommerce.Orders.Api.Application.Dtos;
 
-public struct GetOrdersMap
+public struct GetOrders
 {
     public string? OrderId { get; set; }
     public string? ProductName { get; set; }

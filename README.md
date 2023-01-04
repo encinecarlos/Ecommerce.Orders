@@ -5,6 +5,20 @@
 
 Proposta de treinamento para Avanade Brasil
 
+## Configuração com User Secret
+
+```json
+{
+  "Events": {
+    "BootstrapServers": "localhost:9092"
+  },
+  "MongoDbSettings": {
+    "ConnectionString": "mongodb://localhost:27017",
+    "Database": "ecommerce"
+  }
+}
+```
+
 ## Comandos Docker
 
 > docker-compose -f ./docker/ambiente-local.yml up --force-recreate -d --build

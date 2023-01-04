@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ECommerce.Orders.Api.Application.Dtos;
 using ECommerce.Orders.Api.Application.Notifications;
 using ECommerce.Orders.Api.Domain.Entities;
 using ECommerce.Orders.Api.Domain.Interfaces;
