@@ -33,7 +33,7 @@ public class OrdersController : ControllerBase
     public async Task<ActionResult<OrderDto>> CreateNewOrder([FromBody] AddOrderCommand request,
         CancellationToken cancellationToken)
     {
-        var result = await Mediator.Send(request, cancellationToken);
+        var result = await _mediator.Send(request, cancellationToken);
         return Ok(result);
     }
 }
