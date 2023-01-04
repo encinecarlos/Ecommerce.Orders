@@ -1,6 +1,7 @@
 using System.Reflection;
+using ECommerce.Orders.Api.Domain.Interfaces;
+using ECommerce.Orders.Api.Domain.Services.EventHandler;
 using ECommerce.Orders.Api.Extensions;
-using ECommerce.Orders.Api.Services.EventHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 

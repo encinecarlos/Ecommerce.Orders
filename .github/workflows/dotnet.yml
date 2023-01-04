@@ -1,0 +1,39 @@
+name: ".NET 7 and Github Actions"
+
+on:
+  pull_request:
+    branches:    
+      - main
+      - 'features/**'
+      - '!test/**'      
+  push:
+    branches:    
+      - main
+      - 'features/**'
+    paths:
+      - 'src/**'
+      
+  workflow_dispatch:
+  
+defaults:
+  run:
+    working-directory: src
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+    
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
