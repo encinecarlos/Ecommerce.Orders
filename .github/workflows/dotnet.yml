@@ -1,4 +1,4 @@
-name: .NET 7 and Github Actions
+name: ".NET 7 and Github Actions"
 
 on:
   pull_request:
