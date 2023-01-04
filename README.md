@@ -5,14 +5,15 @@
 
 Proposta de treinamento para Avanade Brasil
 
-# Comandos Docker
+## Comandos Docker
 
-> docker-compose -f ./docker/ambiente-local.yml up -d --build
-> docker-compose -f ./docker/ambiente-local.yml down --remove-orphans
+> docker-compose -f ./docker/ambiente-local.yml up --force-recreate -d --build
+>
+>docker-compose -f ./docker/ambiente-local.yml down --remove-orphans
 
 > docker system prune
 
-# Acessos
+## Tooling e acessos
 
 1. KafDrop
 ```
