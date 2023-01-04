@@ -1,5 +1,5 @@
 
-![Logo](https://raw.githubusercontent.com/encinecarlos/Ecommerce.Orders/featureupdate-Felipe/img/logo.png?raw=true)
+![Logo](https://raw.githubusercontent.com/encinecarlos/Ecommerce.Orders/feature/update/img/logo.png?raw=true)
 
 # Projeto com .net 7 e Kafka
 
