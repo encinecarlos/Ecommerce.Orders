@@ -16,7 +16,7 @@ public class OrderHandler : IRequestHandler<AddOrderCommand, OrderDto>
 
     public OrderHandler(
         ILogger<OrderHandler> logger,
-        IMapper mapper, 
+        IMapper mapper,
         IOrdersRepository ordersRepository,
         IEventHandlerService eventHandlerService)
     {
@@ -27,7 +27,7 @@ public class OrderHandler : IRequestHandler<AddOrderCommand, OrderDto>
     }
 
     public async Task<OrderDto> Handle(
-        AddOrderCommand request, 
+        AddOrderCommand request,
         CancellationToken cancellationToken)
     {
         var result = _mapper.Map<Order>(request.Order);

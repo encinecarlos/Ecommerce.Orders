@@ -1,20 +1,14 @@
-using System.Reflection;
-using ECommerce.Orders.Api.Domain.Interfaces;
-using ECommerce.Orders.Api.Domain.Services.EventHandler;
 using ECommerce.Orders.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMediator();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddRepositories(builder.Configuration);
-builder.Services.AddScoped<IEventHandlerService, EventHandlerService>();
+
+builder.Services.AddIoC(builder.Configuration);
 
 var app = builder.Build();
 
