@@ -40,6 +40,6 @@ public class Order : BaseEntity<string>
         Products.Add(product);
     }
 
-    public void SetCustumer(Customer customer) =>
+    public void SetCustomer(Customer customer) =>
      this.Customer = customer;
 }
