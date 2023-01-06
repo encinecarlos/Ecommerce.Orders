@@ -1,19 +1,23 @@
 ﻿using ECommerce.Orders.Api.Domain.Interfaces;
+using ECommerce.Orders.Api.Domain.Services.EventHandler;
 using ECommerce.Orders.Api.Repositories;
 using ECommerce.Orders.Api.Settings;
+using MediatR;
+using System.Reflection;
 
 namespace ECommerce.Orders.Api.Extensions;
 
-public static class RepositoriesServiceCollectionExtension
+public static class IoCExtensions
 {
-    public static IServiceCollection AddRepositories(
-        this IServiceCollection services,
-        IConfiguration configuration)
+    public static void AddIoC(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        services.AddMediatR(Assembly.GetExecutingAssembly());
+
+        services.AddScoped<IEventHandlerService, EventHandlerService>();
+
         services.Configure<MongoDbSettings>(configuration.GetSection("MongoDb"));
         services.AddSingleton<IMongoDbClientService<Domain.Entities.Order, string>, MongoDbClientService<Domain.Entities.Order, string>>();
         services.AddScoped<IOrdersRepository, OrdersRepository>();
-
-        return services;
     }
 }

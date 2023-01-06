@@ -64,9 +64,9 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
 
-  broker:
+  kafka:
     image: confluentinc/cp-kafka:7.3.0
-    container_name: broker
+    container_name: kafka
     ports:
       - "9092:9092"
     networks: 
@@ -88,7 +88,7 @@ services:
     networks: 
       - broker-kafka
     depends_on:
-      - broker
+      - kafka
     ports:
       - 19000:9000
     environment:

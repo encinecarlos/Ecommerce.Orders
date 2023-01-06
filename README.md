@@ -5,7 +5,7 @@
 
 Proposta de treinamento para Avanade Brasil
 
-## Configuração com User Secret
+## Configuração (preferencialmente utilizar via user secret)
 
 ```json
 {
@@ -21,10 +21,12 @@ Proposta de treinamento para Avanade Brasil
 
 ## Comandos Docker
 
+#### Os comandos devem ser executador a partir da pasta root do projeto
+
 > docker-compose -f ./docker/ambiente-local.yml up --force-recreate -d --build
 >
->docker-compose -f ./docker/ambiente-local.yml down --remove-orphans
-
+> docker-compose -f ./docker/ambiente-local.yml down --remove-orphans
+>
 > docker system prune
 
 ## Tooling e acessos
