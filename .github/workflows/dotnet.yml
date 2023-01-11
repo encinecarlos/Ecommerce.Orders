@@ -18,7 +18,7 @@ on:
   
 defaults:
   run:
-    working-directory: apps
+    working-directory: src
 
 jobs:
   build:
