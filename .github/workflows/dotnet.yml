@@ -11,7 +11,7 @@ on:
       - main
       - 'features/**'
     paths:
-      - 'apps/**/src/**'
+      - 'apps/**'
       
   workflow_dispatch:
   
