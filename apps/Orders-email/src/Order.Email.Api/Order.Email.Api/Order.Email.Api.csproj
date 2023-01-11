@@ -31,8 +31,6 @@
       <Folder Include="Application\Query" />
       <Folder Include="Controllers" />
       <Folder Include="Domain\Entities" />
-      <Folder Include="Domain\Interfaces" />
-      <Folder Include="Domain\Services" />
       <Folder Include="Domain\ValueObjects" />
       <Folder Include="Repositories" />
       <Folder Include="Settings" />
