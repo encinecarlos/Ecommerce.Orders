@@ -18,12 +18,15 @@ on:
   
 defaults:
   run:
-    working-directory: src
+    working-directory: apps
 
 jobs:
-  build:
+  build-orders-service:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: orders-api/src
 
     steps:
     - uses: actions/checkout@v3
@@ -38,3 +41,26 @@ jobs:
       
     - name: Build
       run: dotnet build --no-restore
+
+  build-orders-email:
+
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: orders-email/src
+
+      steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore
+      
+      
