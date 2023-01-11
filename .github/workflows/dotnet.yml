@@ -38,7 +38,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
 
-  build-orders-email:
+  build-email-servcie:
 
       runs-on: ubuntu-latest
       defaults:
