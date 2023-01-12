@@ -11,9 +11,8 @@ on:
       - main
       - 'features/**'
     paths:
-      - 'apps/Orders-api/src/**'
-      - 'apps/Orders-email/src/**'
-      
+      - 'apps/**/**'
+            
   workflow_dispatch:
 
 jobs:
