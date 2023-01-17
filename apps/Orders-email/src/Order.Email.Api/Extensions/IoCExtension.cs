@@ -17,9 +17,11 @@ public static class IoCExtension
         services.AddScoped<IEventHandlerService, EventHandlerService>();
 
         services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
+        services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
         services
-            .AddSingleton<IMongoDbClientService<Domain.Entities.Order, string>,
-                MongoDbClientService<Domain.Entities.Order, string>>();
+            .AddSingleton<IMongoDbClientService<Domain.Entities.Email, string>,
+                MongoDbClientService<Domain.Entities.Email, string>>();
         
+        services.AddScoped<Domain.Entities.Email>();
     }
 }
