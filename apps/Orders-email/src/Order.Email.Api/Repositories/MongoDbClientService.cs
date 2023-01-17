@@ -5,19 +5,19 @@ using MongoDB.Driver;
 using Order.Email.Api.Domain.Interfaces;
 using Order.Email.Api.Settings;
 
-namespace Order.Email.Api.Domain.Services;
+namespace Order.Email.Api.Repositories;
 
 public class MongoDbClientService<T, TId> : IMongoDbClientService<T, TId>
 {
-    private MongoClient _client { get; }
-    private IMongoCollection<T> _collection { get; }
-    private ILogger<MongoDbClientService<T, TId>> _logger { get; }
+    private MongoClient Client { get; }
+    private IMongoCollection<T> Collection { get; }
+    private ILogger<MongoDbClientService<T, TId>> Logger { get; }
 
     public MongoDbClientService(
         IOptions<MongoDbSettings> config, 
         ILogger<MongoDbClientService<T, TId>> logger)
     {
-        _logger = logger;
+        Logger = logger;
         ArgumentNullException.ThrowIfNull(config.Value);
 
         var collectionName = typeof(T).Name;
@@ -26,38 +26,38 @@ public class MongoDbClientService<T, TId> : IMongoDbClientService<T, TId>
         MongoUrl url = new(config.Value.ConnectionString);
         MongoClientSettings settings = MongoClientSettings.FromUrl(url);
 
-        _client = new(settings);
-        _collection = _client.GetDatabase(config.Value.Database).GetCollection<T>(collectionName);
+        Client = new(settings);
+        Collection = Client.GetDatabase(config.Value.Database).GetCollection<T>(collectionName);
     }
     
     public async Task InsertAsync(T entity)
     {
-        _logger.LogInformation("Save data on database.");
-        await _collection.InsertOneAsync(entity);
+        Logger.LogInformation("Save data on database.");
+        await Collection.InsertOneAsync(entity);
     }
 
     public async Task<ReplaceOneResult> UpdateAsync(TId id, T entity)
     {
-        _logger.LogInformation($"update document wuth id: {id}");
+        Logger.LogInformation($"update document wuth id: {id}");
         var filter = Builders<T>.Filter.Eq("_id", id);
-        return await _collection.ReplaceOneAsync(filter, entity);
+        return await Collection.ReplaceOneAsync(filter, entity);
     }
 
     public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate)
     {
-        _logger.LogInformation("Get all documents from database");
-        return await (await _collection.FindAsync(predicate)).ToListAsync();
+        Logger.LogInformation("Get all documents from database");
+        return await (await Collection.FindAsync(predicate)).ToListAsync();
     }
 
     public async Task<T> FindSingleAsync(Expression<Func<T, bool>> predicate)
     {
-        _logger.LogInformation("find single record.");
-        return await (await _collection.FindAsync(predicate)).FirstOrDefaultAsync();
+        Logger.LogInformation("find single record.");
+        return await (await Collection.FindAsync(predicate)).FirstOrDefaultAsync();
     }
 
     public async Task Removeasync(TId id)
     {
-        _logger.LogInformation($"Remove document with id: {id}");
-        await _collection.DeleteOneAsync(Builders<T>.Filter.Eq("_id", id));
+        Logger.LogInformation($"Remove document with id: {id}");
+        await Collection.DeleteOneAsync(Builders<T>.Filter.Eq("_id", id));
     }
 }
