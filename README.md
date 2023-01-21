@@ -23,9 +23,9 @@ Proposta de treinamento para Avanade Brasil
 
 ```json
 "Events": {
-    "BootstrapServers": "",
-    "GroupId": "",
-    "Topic": ""
+    "BootstrapServers": "localhost:9092",
+    "GroupId": "sendEmail01",
+    "Topic": "send-email"
   },
 ```
 
