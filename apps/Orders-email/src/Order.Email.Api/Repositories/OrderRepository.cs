@@ -13,7 +13,7 @@ public class OrderRepository : IOrderRepository
     
     public async Task<Domain.Entities.Order> GetOrderByIdAsync(string id)
     {
-        return await Client.FindSingleAsync(order => order.Id == id);
+        return await Client.FindSingleAsync(order => order.OrderId == id);
     }
 
     public async Task<bool> UpdateOrderAsync(string id, Domain.Entities.Order order)

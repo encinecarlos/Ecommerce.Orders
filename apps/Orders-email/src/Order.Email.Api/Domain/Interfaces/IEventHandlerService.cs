@@ -2,5 +2,5 @@
 
 public interface IEventHandlerService
 {
-    Task<string> ConsumeMessage(CancellationToken cancellationToken);
+    Task<T?> ConsumeMessage<T>(CancellationToken cancellationToken);
 }

@@ -24,7 +24,7 @@ public class MongoDbClientService<T, TId> : IMongoDbClientService<T, TId>
 
         BsonClassMap.RegisterClassMap<T>(cm => cm.AutoMap());
         MongoUrl url = new(config.Value.ConnectionString);
-        MongoClientSettings settings = MongoClientSettings.FromUrl(url);
+        var settings = MongoClientSettings.FromUrl(url);
 
         Client = new(settings);
         Collection = Client.GetDatabase(config.Value.Database).GetCollection<T>(collectionName);
@@ -36,10 +36,10 @@ public class MongoDbClientService<T, TId> : IMongoDbClientService<T, TId>
         await Collection.InsertOneAsync(entity);
     }
 
-    public async Task<ReplaceOneResult> UpdateAsync(TId id, T entity)
+    public async Task<ReplaceOneResult> UpdateAsync(TId orderId, T entity)
     {
-        Logger.LogInformation($"update document wuth id: {id}");
-        var filter = Builders<T>.Filter.Eq("_id", id);
+        Logger.LogInformation($"update document wuth id: {orderId}");
+        var filter = Builders<T>.Filter.Eq("OrderId", orderId);
         return await Collection.ReplaceOneAsync(filter, entity);
     }
 

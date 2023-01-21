@@ -13,8 +13,8 @@ services:
     depends_on:
       - mongodb
     build:
-      context: ../src
-      dockerfile: ./ECommerce.Orders.Api/Dockerfile
+      context: ../apps/Orders-api/src
+      dockerfile: Dockerfile
     ports:
       - 9042:80
       - 9043:443
