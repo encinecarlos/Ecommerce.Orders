@@ -1,6 +1,6 @@
 ﻿namespace Order.Email.Api.Domain.Entities;
 
-public class Email
+public class Email : BaseEntity<string>
 {
     public string? From { get; private set; }
     public string? To { get; private set; }

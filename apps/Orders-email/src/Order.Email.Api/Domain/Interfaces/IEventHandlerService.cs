@@ -2,5 +2,5 @@
 
 public interface IEventHandlerService
 {
-    Task<bool> ConsumeMessage<T>(string topic, CancellationToken cancellationToken, Func<T> messageProcess);
+    Task<string> ConsumeMessage(CancellationToken cancellationToken);
 }

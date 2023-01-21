@@ -18,10 +18,9 @@ public static class IoCExtension
 
         services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings"));
         services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
-        services
-            .AddSingleton<IMongoDbClientService<Domain.Entities.Email, string>,
-                MongoDbClientService<Domain.Entities.Email, string>>();
-        
+        services.AddSingleton<IMongoDbClientService<Domain.Entities.Email, string>, MongoDbClientService<Domain.Entities.Email, string>>();
+        services.AddSingleton<IMongoDbClientService<Domain.Entities.Order, string>, MongoDbClientService<Domain.Entities.Order, string>>();
         services.AddScoped<Domain.Entities.Email>();
+        services.AddScoped<Domain.Entities.Order>();
     }
 }
