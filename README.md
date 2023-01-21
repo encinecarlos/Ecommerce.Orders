@@ -19,6 +19,16 @@ Proposta de treinamento para Avanade Brasil
 }
 ```
 
+## Configuração do kafka para o consumer
+
+```json
+"Events": {
+    "BootstrapServers": "localhost:9092",
+    "GroupId": "sendEmail01",
+    "Topic": "send-email"
+  },
+```
+
 ## Comandos Docker
 
 #### Os comandos devem ser executador a partir da pasta root do projeto
