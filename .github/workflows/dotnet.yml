@@ -11,18 +11,17 @@ on:
       - main
       - 'features/**'
     paths:
-      - 'src/**'
-      
+      - 'apps/**/**'
+            
   workflow_dispatch:
-  
-defaults:
-  run:
-    working-directory: src
 
 jobs:
-  build:
+  build-orders-service:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/Orders-api/src
 
     steps:
     - uses: actions/checkout@v3

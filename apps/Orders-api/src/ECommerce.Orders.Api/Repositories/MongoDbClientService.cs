@@ -23,7 +23,7 @@ public class MongoDbClientService<T, TId> : IMongoDbClientService<T, TId>
         var collectionName = typeof(T).Name;
 
         BsonClassMap.RegisterClassMap<T>(cm => cm.AutoMap());
-        MongoUrl mongoUrl = new MongoUrl(config.Value.ConnectionString);
+        var mongoUrl = new MongoUrl(config.Value.ConnectionString);
         var mongoClientSettings = MongoClientSettings.FromUrl(mongoUrl);
 
         Client = new MongoClient(mongoClientSettings);
