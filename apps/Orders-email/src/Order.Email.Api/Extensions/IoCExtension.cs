@@ -3,8 +3,10 @@ using MediatR;
 using Order.Email.Api.Application.Query;
 using Order.Email.Api.Domain.Interfaces;
 using Order.Email.Api.Domain.Services.EventHandler;
+using Order.Email.Api.Domain.Services.Messagehandler;
 using Order.Email.Api.Repositories;
 using Order.Email.Api.Settings;
+using SendGrid.Extensions.DependencyInjection;
 
 namespace Order.Email.Api.Extensions;
 
@@ -14,6 +16,10 @@ public static class IoCExtension
     {
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddSendGrid(options =>
+        {
+            options.ApiKey = configuration["EmailSettings:AccessKey"];
+        });
         
         services.AddSingleton<IEventHandlerService, EventHandlerService>();
 
@@ -25,5 +31,6 @@ public static class IoCExtension
         services.AddSingleton<Domain.Entities.Email>();
         services.AddSingleton<Domain.Entities.Order>();
         services.AddSingleton<GetOrderById>();
+        services.AddSingleton<IMessageHandlerService, MessageHandlerService>();
     }
 }

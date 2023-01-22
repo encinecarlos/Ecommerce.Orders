@@ -1,7 +1,7 @@
 ﻿using Order.Email.Api.Application.Notifications;
 using Order.Email.Api.Application.Query;
-using Order.Email.Api.Domain.Entities;
 using Order.Email.Api.Domain.Interfaces;
+using Order.Email.Api.Domain.Services.Messagehandler;
 
 namespace Order.Email.Api.Domain.Services;
 
@@ -10,14 +10,16 @@ public class BackGroundProcessMessageService : BackgroundService
     private ILogger<BackGroundProcessMessageService> Logger { get; }
     private IEventHandlerService EventConsumer { get; }
     private GetOrderById GetOrder { get; }
+    private IMessageHandlerService MessageService { get; }
     public BackGroundProcessMessageService(
         ILogger<BackGroundProcessMessageService> logger, 
         IEventHandlerService eventConsumer, 
-        GetOrderById getOrder)
+        GetOrderById getOrder, IMessageHandlerService messageService)
     {
         Logger = logger;
         EventConsumer = eventConsumer;
         GetOrder = getOrder;
+        MessageService = messageService;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -32,15 +34,10 @@ public class BackGroundProcessMessageService : BackgroundService
 
                 var order = await GetOrder.GetOrder(result.OrderId);
                 {
-                    var orderFound = new
-                    {
-                        OrderId = order.OrderId,
-                        customername = order.Customer.Name,
-                        email = order.Customer.Email
-                    };
+                    await MessageService.SendMessage(order);
                 }
 
-                Logger.LogInformation($"Message received: {result}");
+                Logger.LogInformation($"Message received: {result.OrderId}");
             }
         }
         catch(Exception ex)
