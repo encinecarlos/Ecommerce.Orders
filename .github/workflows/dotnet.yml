@@ -36,3 +36,24 @@ jobs:
       
     - name: Build
       run: dotnet build --no-restore
+      
+  build-email-servcie:
+      runs-on: ubuntu-latest
+      defaults:
+          run:
+              working-directory: apps/Orders-email/src
+
+      steps:
+          - uses: actions/checkout@v3
+          - name: Setup .NET
+
+            uses: actions/setup-dotnet@v3
+            with:
+                dotnet-version: 7.0.x
+
+          - name: Restore dependencies
+            run: dotnet restore
+
+          - name: Build
+            run: dotnet build --no-restore
+      
