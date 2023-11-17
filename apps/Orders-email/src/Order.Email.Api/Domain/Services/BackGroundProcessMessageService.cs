@@ -14,7 +14,8 @@ public class BackGroundProcessMessageService : BackgroundService
     public BackGroundProcessMessageService(
         ILogger<BackGroundProcessMessageService> logger, 
         IEventHandlerService eventConsumer, 
-        GetOrderById getOrder, IMessageHandlerService messageService)
+        GetOrderById getOrder, 
+        IMessageHandlerService messageService)
     {
         Logger = logger;
         EventConsumer = eventConsumer;
@@ -33,9 +34,7 @@ public class BackGroundProcessMessageService : BackgroundService
                 var result = await EventConsumer.ConsumeMessage<OrderMessage>(stoppingToken);
 
                 var order = await GetOrder.GetOrder(result.OrderId);
-                {
-                    await MessageService.SendMessage(order);
-                }
+                await MessageService.SendMessage(order).ConfigureAwait(false);
 
                 Logger.LogInformation($"Message received: {result.OrderId}");
             }

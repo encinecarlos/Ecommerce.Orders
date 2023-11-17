@@ -1,14 +1,16 @@
-﻿namespace Order.Email.Api.Domain.Entities;
+﻿using Order.Email.Api.Domain.ValueObjects;
+
+namespace Order.Email.Api.Domain.Entities;
 
 public class Email : BaseEntity<string>
 {
-    public string? From { get; private set; }
-    public string? To { get; private set; }
-    public string? Body { get; private set; }
+    public string? Origin { get; private set; }
+    public string? Destination { get; private set; }
+    public OrderData? Content { get; private set; }
 
-    public void SetFrom(string origin) => this.From = origin;
+    public void SetOrigin(string origin) => this.Origin = origin;
     
-    public void SetTo(string destination) => this.To = destination;
+    public void SetDestination(string destination) => this.Destination = destination;
     
-    public void SetBody(string message) => this.Body = message;
+    public void SetContent(OrderData message) => this.Content = message;
 }

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Orders.Api", "apps\Orders-api\src\ECommerce.Orders.Api\ECommerce.Orders.Api.csproj", "{7C07B48F-C7ED-4E15-B608-77A881D469E7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order.Email.Api", "apps\Orders-email\src\Order.Email.Api\Order.Email.Api.csproj", "{E14CFB4F-E3EE-4AC8-9E75-9F1873DF4974}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C07B48F-C7ED-4E15-B608-77A881D469E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C07B48F-C7ED-4E15-B608-77A881D469E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C07B48F-C7ED-4E15-B608-77A881D469E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C07B48F-C7ED-4E15-B608-77A881D469E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E14CFB4F-E3EE-4AC8-9E75-9F1873DF4974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E14CFB4F-E3EE-4AC8-9E75-9F1873DF4974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E14CFB4F-E3EE-4AC8-9E75-9F1873DF4974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E14CFB4F-E3EE-4AC8-9E75-9F1873DF4974}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4291E4CD-BDB2-4505-A988-360B3844CCE5}
+	EndGlobalSection
+EndGlobal
