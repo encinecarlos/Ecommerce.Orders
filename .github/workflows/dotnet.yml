@@ -6,7 +6,13 @@ on:
       - main
       - 'features/**'
       - '!test/**'      
-              
+  push:
+    branches:    
+      - main
+      - 'features/**'
+    paths:
+      - 'apps/**/**'
+            
   workflow_dispatch:
 
 jobs:
