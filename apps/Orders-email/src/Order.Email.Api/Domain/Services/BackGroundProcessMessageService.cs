@@ -1,7 +1,7 @@
-﻿using Order.Email.Api.Application.Notifications;
+﻿using Order.Email.Api.Application.Command.SendEmail;
+using Order.Email.Api.Application.Notifications;
 using Order.Email.Api.Application.Query;
 using Order.Email.Api.Domain.Interfaces;
-using Order.Email.Api.Domain.Services.Messagehandler;
 
 namespace Order.Email.Api.Domain.Services;
 
@@ -14,7 +14,8 @@ public class BackGroundProcessMessageService : BackgroundService
     public BackGroundProcessMessageService(
         ILogger<BackGroundProcessMessageService> logger, 
         IEventHandlerService eventConsumer, 
-        GetOrderById getOrder, IMessageHandlerService messageService)
+        GetOrderById getOrder, 
+        IMessageHandlerService messageService)
     {
         Logger = logger;
         EventConsumer = eventConsumer;
@@ -33,9 +34,7 @@ public class BackGroundProcessMessageService : BackgroundService
                 var result = await EventConsumer.ConsumeMessage<OrderMessage>(stoppingToken);
 
                 var order = await GetOrder.GetOrder(result.OrderId);
-                {
-                    await MessageService.SendMessage(order);
-                }
+                await MessageService.SendMessage(EmailAdapter.Adapt(order)).ConfigureAwait(false);
 
                 Logger.LogInformation($"Message received: {result.OrderId}");
             }

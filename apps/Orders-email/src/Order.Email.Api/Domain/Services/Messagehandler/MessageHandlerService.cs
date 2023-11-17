@@ -16,21 +16,21 @@ public class MessageHandlerService : IMessageHandlerService
         MailClient = mailclient;
     }
 
-    public async Task SendMessage(Entities.Order order)
+    public async Task SendMessage(Entities.Email messageEmail)
     {
         Logger.LogInformation("Send email to customer");
-        var plainMessage = $"your product {order.Products[0].ProductName} was purchased successfully.";
-        var htmlMessage = $"your product <b>{order.Products[0].ProductName}</b> was purchased successfully.";
+        var plainMessage = $"your product(s)  was purchased successfully.";
+        var htmlMessage = $"your product(s)  was purchased successfully.";
         
         var message = new SendGridMessage
         {
             From = new EmailAddress(Configuration["EmailSettings:Origin"], "Ecommerce Store"),
-            Subject = $"ecommerce.store | purchase nº {order.OrderId}"
+            Subject = $"ecommerce.store | purchase nº {messageEmail?.Content?.OrderId}"
         };
 
         message.AddContent(MimeType.Html, htmlMessage);
         message.AddContent(MimeType.Text, plainMessage);
-        message.AddTo(new EmailAddress(order.Customer.Email, "Carlos Encine"));
+        message.AddTo(new EmailAddress(messageEmail?.Content?.CustomerEmail, messageEmail?.Content?.CustomerName));
 
         await MailClient.SendEmailAsync(message);
     }

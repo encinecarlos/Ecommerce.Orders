@@ -2,5 +2,5 @@
 
 public interface IMessageHandlerService
 {
-    Task SendMessage(Entities.Order order);
+    Task SendMessage(Entities.Email messageEmail);
 }
