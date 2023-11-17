@@ -10,11 +10,10 @@ public static class EmailAdapter
             CustomerEmail: order.Customer.Email, 
             OrderId: order.OrderId,
             CustomerName: order.Customer.Name, 
-            ProductName: order.Products[0].ProductName,
-            ProductPrice: order.Products[0].Price);
+            Products: order.Products);
         
         var email = new Domain.Entities.Email();
-        email.SetOrigin("carlos.encine@outlook.com");
+        email.SetOrigin(content.CustomerEmail);
         email.SetDestination(order.Customer.Email);
         email.SetContent(content);
 

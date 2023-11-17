@@ -19,8 +19,8 @@ public class MessageHandlerService : IMessageHandlerService
     public async Task SendMessage(Entities.Email messageEmail)
     {
         Logger.LogInformation("Send email to customer");
-        var plainMessage = $"your product {messageEmail?.Content?.ProductName} was purchased successfully.";
-        var htmlMessage = $"your product <b>{messageEmail?.Content?.ProductName}</b> was purchased successfully.";
+        var plainMessage = $"your product(s)  was purchased successfully.";
+        var htmlMessage = $"your product(s)  was purchased successfully.";
         
         var message = new SendGridMessage
         {
@@ -30,7 +30,7 @@ public class MessageHandlerService : IMessageHandlerService
 
         message.AddContent(MimeType.Html, htmlMessage);
         message.AddContent(MimeType.Text, plainMessage);
-        message.AddTo(new EmailAddress(messageEmail?.Content?.CustomerEmail, "Carlos Encine"));
+        message.AddTo(new EmailAddress(messageEmail?.Content?.CustomerEmail, messageEmail?.Content?.CustomerName));
 
         await MailClient.SendEmailAsync(message);
     }

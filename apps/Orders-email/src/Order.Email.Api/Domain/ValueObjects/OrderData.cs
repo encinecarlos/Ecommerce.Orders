@@ -1,8 +1,9 @@
-﻿namespace Order.Email.Api.Domain.ValueObjects;
+﻿using Order.Email.Api.Domain.Entities;
+
+namespace Order.Email.Api.Domain.ValueObjects;
 
 public record OrderData(
     string OrderId,
     string CustomerName,
     string CustomerEmail,
-    string ProductName,
-    decimal ProductPrice);
+    List<Product> Products);

@@ -15,7 +15,10 @@ public static class IoCExtension
     public static void AddIoC(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddMediatR(opt =>
+        {
+            opt.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+        });
         services.AddSendGrid(options =>
         {
             options.ApiKey = configuration["EmailSettings:AccessKey"];
